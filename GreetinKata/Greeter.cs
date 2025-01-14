@@ -13,8 +13,9 @@ public class Greeter
         }
         if (name is string[] names)
         {
-            var normalNames = names.Where(n => n.ToUpper() != n).ToArray();
-            var shoutedNames = names.Where(n => n.ToUpper() == n).ToArray();
+            var allNames = names.SelectMany(n => n.Split(", ")).ToArray();
+            var normalNames = allNames.Where(n => n.ToUpper() != n).ToArray();
+            var shoutedNames = allNames.Where(n => n.ToUpper() == n).ToArray();
             string normalGreeting = "";
             if (normalNames.Length == 1)
                 normalGreeting = $"Hello, {normalNames[0]}.";

@@ -1,6 +1,6 @@
 using GreetingKata;
 namespace GreetingKataTests;
-public class GreeterTests1
+public class GreeterTest1
 {
     [Fact]
     public void Greet_WhenCalledWithName_ReturnsGreetingWithName()
