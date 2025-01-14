@@ -1,5 +1,6 @@
-namespace GreetingKata.Tests;
-public class GreeterTests
+﻿using GreetingKata;
+namespace GreetingKataTests;
+public class GreeterTest2
 {
     [Fact]
     public void Greet_WhenNameIsNull_ReturnsGreetingForFriend()
