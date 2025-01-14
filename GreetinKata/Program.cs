@@ -1,5 +1,4 @@
 ﻿namespace GreetingKata;
-
 class Program
 {
     static void Main(string[] args)
