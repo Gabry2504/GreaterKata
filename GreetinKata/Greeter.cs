@@ -13,13 +13,22 @@ public class Greeter
         }
         if (name is string[] names)
         {
-            if (names.Length == 2)
-                return $"Hello, {names[0]} and {names[1]}.";
-            if (names.Length > 2)
+            var normalNames = names.Where(n => n.ToUpper() != n).ToArray();
+            var shoutedNames = names.Where(n => n.ToUpper() == n).ToArray();
+            string normalGreeting = "";
+            if (normalNames.Length == 1)
+                normalGreeting = $"Hello, {normalNames[0]}.";
+            else if (normalNames.Length == 2)
+                normalGreeting = $"Hello, {normalNames[0]} and {normalNames[1]}.";
+            else if (normalNames.Length > 2)
             {
-                var allButLast = string.Join(", ", names[..^1]);
-                return $"Hello, {allButLast}, and {names[^1]}.";
+                var allButLast = string.Join(", ", normalNames[..^1]);
+                normalGreeting = $"Hello, {allButLast}, and {normalNames[^1]}.";
             }
+            string shoutedGreeting = "";
+            if (shoutedNames.Length > 0)
+                shoutedGreeting = $"AND HELLO {string.Join(" AND ", shoutedNames)}!";
+            return $"{normalGreeting} {shoutedGreeting}".Trim();
         }
         return "Hello.";
     }
