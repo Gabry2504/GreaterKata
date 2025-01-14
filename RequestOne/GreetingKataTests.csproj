@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\GreetinKata\GreetinKata.csproj" />
+    <ProjectReference Include="..\GreetinKata\GreetingKata.csproj" />
   </ItemGroup>
 
   <ItemGroup>
