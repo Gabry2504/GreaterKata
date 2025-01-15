@@ -1,10 +1,17 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <OutputType>Exe</OutputType>
-    <TargetFramework>net8.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
+	<PropertyGroup>
+		<OutputType>Library</OutputType>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<Authors>Gabry2504</Authors>
+		<PackageId>GreetingKata</PackageId>
+		<Version>1.0.0</Version>
+		<Description>A library for the Greeting Kata with Chain of Responsibility</Description>
+		<PackageTags>Greeting,Kata,ChainOfResponsibility</PackageTags>
+		<RepositoryUrl>https://github.com/YourUsername/https://github.com/Gabry2504/GreaterKata.git</RepositoryUrl>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+	</PropertyGroup>
 
 </Project>

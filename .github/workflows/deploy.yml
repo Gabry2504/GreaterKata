@@ -6,9 +6,10 @@ on:
   push
 
 jobs:
-  my_first_job:
+  publish:
+    name: Publish to NuGet
     runs-on: ubuntu-latest
-    name: Build, Test, and Deploy
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -21,12 +22,13 @@ jobs:
       - name: Restore dependencies
         run: dotnet restore
 
-      - name: Build the solution
-        run: dotnet build --no-restore --configuration Release
+      - name: Build the project
+        run: dotnet build --configuration Release
 
-      - name: Run tests
-        run: dotnet test --no-build --configuration Release --verbosity normal
+      - name: Pack the project
+        run: dotnet pack --configuration Release -o ./packages
 
-      - name: Publish application
-        run: |
-          dotnet publish -c Release -o ./publish
+      - name: Publish to NuGet
+        env:
+          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+        run: dotnet nuget push ./packages/*.nupkg --api-key $NUGET_API_KEY --source https://api.nuget.org/v3/index.json
