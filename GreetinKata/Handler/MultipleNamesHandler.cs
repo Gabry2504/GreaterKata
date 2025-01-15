@@ -1,16 +1,8 @@
 ﻿namespace GreetingKata;
-public class Greeter
+public class MultipleNamesHandler : GreetingHandler
 {
-    public string Greet(object name)
+    public override string Handle(object name)
     {
-        if (name == null || string.IsNullOrEmpty(name.ToString()))
-            return "Hello, my friend.";
-        if (name is string singleName)
-        {
-            if (singleName.ToUpper() == singleName)
-                return $"HELLO {singleName}!";
-            return $"Hello, {singleName}.";
-        }
         if (name is string[] names)
         {
             var allNames = names.SelectMany(n =>
@@ -35,6 +27,6 @@ public class Greeter
                 shoutedGreeting = $"AND HELLO {string.Join(" AND ", shoutedNames)}!";
             return $"{normalGreeting} {shoutedGreeting}".Trim();
         }
-        return "Hello.";
+        return base.Handle(name);
     }
 }
