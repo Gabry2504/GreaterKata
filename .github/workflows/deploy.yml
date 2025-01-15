@@ -7,7 +7,7 @@ on:
 
 jobs:
   publish:
-    name: Publish to NuGet
+    name: Publish to GitHub
     runs-on: ubuntu-latest
 
     steps:
