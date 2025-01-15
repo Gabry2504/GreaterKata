@@ -13,9 +13,13 @@ public class Greeter
         }
         if (name is string[] names)
         {
-            var allNames = names.SelectMany(n => n.Split(", ")).ToArray();
-            var normalNames = allNames.Where(n => n.ToUpper() != n).ToArray();
-            var shoutedNames = allNames.Where(n => n.ToUpper() == n).ToArray();
+            var allNames = names.SelectMany(n =>
+                n.StartsWith("\"") && n.EndsWith("\"")
+                    ? new[] { n.Trim('\"') }
+                    : n.Split(", ")
+            ).ToArray();
+            var normalNames = allNames.Where(n => !(n.ToUpper() == n && !n.Contains(","))).ToArray();
+            var shoutedNames = allNames.Where(n => n.ToUpper() == n && !n.Contains(",")).ToArray();
             string normalGreeting = "";
             if (normalNames.Length == 1)
                 normalGreeting = $"Hello, {normalNames[0]}.";
